@@ -10,12 +10,20 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 app.use(helmet());
+
+/*
 app.use(cors({
   origin: [
     "http://localhost:5173",
     "https://investo-business-website.vercel.app",
   ],
 }))
+*/
+
+app.use(cors({
+origin: process.env.CLIENT_URL
+}))
+
 
 app.use("/users", userRoutes);
 app.use("/business", businessIdeaRoutes);
