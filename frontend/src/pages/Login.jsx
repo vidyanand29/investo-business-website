@@ -18,7 +18,6 @@ import {
 
 const Login = () => {
 const BASE_URL = import.meta.env.VITE_API_BASE_URL;
-alert(BASE_URL)  
 const navigate = useNavigate();
   const [formData,
     setformData] = useState( {
@@ -50,9 +49,14 @@ const navigate = useNavigate();
       }
 
     } catch (err) {
-      console.error('Error:', err);
-      errorAlert(err.response.data.message)
-    }
+  console.log(err);
+
+  errorAlert(
+    err.response?.data?.message ||
+    err.message ||
+    "Network / CORS / Server issue"
+  );
+}
   }
 
   return (
