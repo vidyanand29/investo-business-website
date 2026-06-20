@@ -42,7 +42,7 @@ const BASE_URL = import.meta.env.VITE_API_BASE_URL;
       const res = await axios.post(`${BASE_URL}/users/login`, formData)
       successAlert(res.data.message);
       localStorage.setItem("token", res.data.token)
-      if (res.data.response.role === "Entrepreneur") {
+      if (res.data.response?.role === "Entrepreneur") {
         navigate('/entrepreneurDash')
       } else {
         navigate('/investorDash')
